@@ -1,0 +1,155 @@
+nav {
+    background-color: #262626;
+    padding: 10px;
+    text-align: center;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+nav li {
+    display: inline-block;
+    text-align: center;
+    color: wheat;
+}
+
+nav .options {
+    display: flex;
+    justify-content: center;
+    color: wheat;
+}
+
+nav li a {
+    display: block;
+    color: wheat;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+nav li a:hover {
+    background-color: #111;
+}
+
+nav li ul {
+    display: none;
+}
+
+nav li:hover ul {
+    display: block;
+    position: absolute;
+    background-color: #262626;
+    padding: 10px;
+}
+
+nav li ul li {
+    float: none;
+}
+
+nav li ul li a {
+    padding: 10px;
+    text-align: left;
+}
+
+h1 {
+    text-align: center;
+}
+
+form {
+    width: 30%;
+    margin: 20px auto;
+    text-align: center;
+}
+input {
+    text-align: center;
+}
+
+label,
+input[type="submit"] {
+    display: block;
+    margin: 10px auto;
+}
+
+input[type="email"],
+input[type="password"],
+input[type="text"],
+input[type="submit"] {
+    padding: 12px 20px;
+    width: 100%;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    font-size: 16px;
+    resize: none;
+}
+
+input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    border-color: #4CAF50;
+}
+
+
+footer {
+    clear: both;
+    margin-top: auto;
+    text-align: center;
+
+}
+
+.slider {
+    width: 600px;
+    height: 400px;
+    position: relative;
+    overflow: hidden;
+    margin: auto;
+}
+
+.content {
+    width: 600px;
+    height: 400px;
+    display: inline-block;
+    text-align: center;
+}
+
+.content img {
+    width: 600px;
+    height: 400px;
+    object-fit: cover;
+}
+
+.directions {
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    text-align: center;
+}
+
+.left,
+.right {
+    width: 50px;
+    height: 50px;
+    display: inline-block;
+    text-align: center;
+    line-height: 50px;
+    font-size: 25px;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 50%;
+    cursor: pointer;
+    position: absolute;
+}
+
+.left {
+    left: 10px;
+}
+
+.right {
+    right: 10px;
+}

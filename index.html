@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page d'accueil</title>
+    <link rel="stylesheet" type="text/css" href="./css/form.css">
+</head>
+<body>
+    <main>
+        <div>
+            <h1>Page d'authentification</h1>
+        </div>
+        <!-- formulaire d'authentification -->
+        <form action="authentification.php" method="POST">
+            
+            <label for="email">Adresse email :</label>
+            <input type="email" id="email" name="mail" required>
+
+            <label for="password">Mot de passe :</label>
+            <input type="password" id="password" name="mdp" required>
+
+            <input type="submit" value="Se connecter">
+        </form>
+        <!-- lien vers la page d'inscription -->
+        <a class="inscription" href="#" style="display: block; text-align: center; margin-top: 10px; text-decoration: none;"
+            onclick="window.confirm('Êtes-vous sûr de vouloir vous inscrire ?') ? window.location.href = 'inscription.php' : false;">Inscrivez-vous</a>
+        <br>
+        <!-- lien vers la page de modification du mot de passe -->
+        <a class="changement" href="#" style="display: block; text-align: center; margin-top: 10px; text-decoration: none;"
+            onclick="window.confirm(`Êtes-vous sûr de vouloir passer à l'étape suivante ?`) ? window.location.href = 'modificationMdp.php' : false;">Mot de passe oublié</a>
+    </main>
+<footer>
+    <p>Copyright ©2023 Bibliothèque</p>
+</footer>
+</body>
+
+</html>
