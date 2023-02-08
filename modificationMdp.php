@@ -12,7 +12,7 @@
 
 <body>
     <main>
-        <h1>Modification du mot de passe</h1>
+        <h1 class="titrePage">Modification du mot de passe</h1>
 
         <form action="traitementModification.php" method="POST">
 

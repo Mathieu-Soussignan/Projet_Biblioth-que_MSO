@@ -2,7 +2,7 @@
     let left = document.querySelector('.left');
     let right = document.querySelector('.right');
     let contents = document.querySelector('.contents');
-let slider = document.querySelector('.slider');
+    let slider = document.querySelector('.slider');
     
 if (contents) {
         
@@ -95,7 +95,10 @@ document.getElementById("logout").addEventListener("click", function () {
         }
     }
     DarkMode();
-});
+    });
+
+
+
 
 
 

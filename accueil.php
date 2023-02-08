@@ -57,7 +57,6 @@
     <footer>
         <p id="end">Copyright ©2023 Bibliothèque</p>
     </footer>
-    <div id="ball" onclick="ShiftBall()" class=" ball"></div>
 </body>
 
 </html>

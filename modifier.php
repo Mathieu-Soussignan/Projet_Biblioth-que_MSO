@@ -12,10 +12,9 @@
 <body>
     <main>
         <!-- lien vers la page d'authentification -->
-        <a href="javascript:void(0)" onclick="if (confirm('Voulez-vous vraiment vous déconnecter ?')) { location.href='deconnexion.php'; }"
-            style="display:inline-block; padding: 10px 20px; font-weight: bold; font-size:20px; text-decoration: none; color: black; background-color: #ddd; border-radius: 5px;">Déconnexion</a>
+        <a href="javascript:void(0)" onclick="if (confirm('Voulez-vous vraiment vous déconnecter ?')) { location.href='deconnexion.php'; }" style="display:inline-block; padding: 10px 20px; font-weight: bold; font-size:20px; text-decoration: none; color: black; background-color: #ddd; border-radius: 5px;">Déconnexion</a>
 
-        <h1>Edition d'un ouvrage</h1>
+        <h1 class="titrePage">Edition d'un ouvrage</h1>
         <?php
         $connex = mysqli_connect('localhost', 'root', '', 'bdp7');
         $id = $_GET['id'];

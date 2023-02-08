@@ -12,7 +12,7 @@
 <body>
     <main>
         <div>
-            <h1>Page d'inscription</h1>
+            <h1 class="titrePage">Page d'inscription</h1>
         </div>
         <!-- formulaire d'inscription -->
         <form action="traitementInscription.php" method="POST">

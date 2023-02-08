@@ -11,7 +11,7 @@
 
 <body>
     <header>
-        <h1>Affichage d'un livre par Titre</h1>
+        <h1 class="titrePage">Affichage d'un livre par Titre</h1>
         <?php include "header.php"; ?>
     </header>
     <main>

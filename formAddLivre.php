@@ -11,7 +11,7 @@
 
 <body>
     <header>
-        <h1>Ajouter un livre</h1>
+        <h1 class="titrePage">Ajouter un livre</h1>
         <?php include "header.php"; ?>
     </header>
     <form action="./traitementInsertion.php" method="POST">
