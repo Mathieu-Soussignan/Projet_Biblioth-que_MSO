@@ -10,6 +10,11 @@
 </head>
 
 <body>
+    <header>
+        <h1 class="titrePage">Affichge livres par Titre</h1>
+        <!-- fichier header chargé au démarrage de la page -->
+        <?php include "header.php"; ?>
+    </header>
     <?php
     if (isset($_POST['Titre'])) {
 

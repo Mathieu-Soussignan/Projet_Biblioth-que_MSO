@@ -14,6 +14,7 @@
 <body>
     <header>
         <h1 class="titrePage">Bienvenue sur la page d'accueil</h1>
+        <!-- fichier header chargé au démarrage de la page -->
         <?php include "header.php"; ?>
     </header>
     <main>

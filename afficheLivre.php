@@ -49,8 +49,8 @@
                 echo "<td>" . $row['Annee_edition'] . "</td>";
                 echo "<td>" . $row['Prix'] . "</td>";
                 echo "<td>" . $row['Langue'] . "</td>";
-                echo "<td style='text-align:center;'><a href='modifier.php?id=" . $row['id'] . "' style='color: black;'><i class='fa fa-pencil-alt'></i></a></td>";
-                echo "<td style='text-align:center;'><a href='javascript:void(0)' onclick='confirmDelete(" . $row['id'] . ")' style='color: red;'><i class='fa fa-trash'></i></a></td>";
+                echo "<td class = pencil ><a href='modifier.php?id=" . $row['id'] . "' style='color: black;'><i class='fa fa-pencil-alt'></i></a></td>";
+                echo "<td class = trash ><a href='javascript:void(0)' onclick='confirmDelete(" . $row['id'] . ")' style='color: red;'><i class='fa fa-trash'></i></a></td>";
                 echo "</tr>";
             }
             mysqli_close($connex);

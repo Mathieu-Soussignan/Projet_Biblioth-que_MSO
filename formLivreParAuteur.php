@@ -18,8 +18,11 @@
         <form action="./traitementAfficheLivreParAuteur.php" method="POST">
             <label for="Nom_auteur">Nom auteur :</label>
             <input type="text" id="Nom_auteur" name="Nom_auteur" required>
-
+            <br><br>
             <input type="submit" value="Rechercher">
+            <br>
+            <!-- lien vers la page d'authentification -->
+            <a href="./accueil.php" style=" padding: 10px 20px; font-size:20px; font-weight: bold; text-decoration: none; color: black;">Annuler</a>
         </form>
     </main>
     <footer>

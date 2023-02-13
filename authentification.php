@@ -14,36 +14,38 @@
         <?php
 
         session_start();
-        
+
         if (
-            isset($_POST['mail']) && isset($_POST['mdp'])) {
+            isset($_POST['mail']) && isset($_POST['mdp'])
+        ) {
 
             $connex = mysqli_connect("localhost", "root", "", "bdp7");
 
             $mail = $_POST['mail'];
             $mdp = $_POST['mdp'];
 
-            
+
             $query = "SELECT * FROM user WHERE mail='$mail' AND mdp='$mdp'";
             $result = mysqli_query($connex, $query);
             $donnee = mysqli_fetch_array($result);
-            if ($donnee)
-            {
+            if ($donnee) {
 
-            $nom = $donnee[1];
-            $prenom = $donnee[2];
-            // echo $nom. " " . $prenom;
-        
-            $_SESSION['nom'] = $nom;
-            $_SESSION['prenom'] = $prenom;
-            header("Location: accueil.php");
-            exit;
+                $nom = $donnee[1];
+                $prenom = $donnee[2];
+                // echo $nom. " " . $prenom;
+
+                $_SESSION['nom'] = $nom;
+                $_SESSION['prenom'] = $prenom;
+                header("Location: accueil.php");
+                exit;
             } else {
                 $error = "Nom d'utilisateur ou mot de passe incorrect";
+                echo "Redirection vers la page d'authentification en cours...";
+                header("Location: index.html");
             }
 
             mysqli_close($connex);
-        }
+        };
         ?>
 
         <?php if (isset($error)) { ?>

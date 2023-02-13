@@ -10,10 +10,10 @@
 </head>
 
 <body>
+    <header>
+        <h1 class="titrePage">Page d'inscription</h1>
+    </header>
     <main>
-        <div>
-            <h1 class="titrePage">Page d'inscription</h1>
-        </div>
         <!-- formulaire d'inscription -->
         <form action="traitementInscription.php" method="POST">
 

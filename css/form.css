@@ -153,3 +153,10 @@ footer {
 .right {
     right: 10px;
 }
+
+/* media queries */
+
+@media screen and (max-width : 800px) {
+
+    
+}

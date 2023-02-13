@@ -2,6 +2,7 @@ nav {
     background-color: #262626;
     padding: 10px;
     text-align: center;
+    width: 100%;
 }
 
 nav ul {
@@ -67,8 +68,13 @@ th,
 td {
     border: 1px solid #dddddd;
     padding: 8px;
-    text-align: left;
+    text-align: center;
 }
+
+.pencil {
+    text-align: center;
+}
+
 
 th {
     background-color: #f5f5f5;
@@ -181,4 +187,29 @@ i {
 
 .active {
     left: 25px;
+}
+
+
+/* Media queries */
+
+@media screen and (max-width : 1100px) {
+    
+    table th,
+    table tr,
+    td {
+        display: block;
+        width: 100%;
+    }
+
+    table th {
+        display: none;
+    }
+
+    .pencil {
+        text-align: center;
+    }
+
+    .trash {
+        text-align: center;
+    }
 }

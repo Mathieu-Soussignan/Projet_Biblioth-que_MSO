@@ -21,7 +21,9 @@
             <input type="password" name="newPassword" placeholder="Nouveau mot de passe" style="margin-bottom: 20px;">
 
             <input type="submit" value="Modifier le mot de passe">
-
+            
+            <!-- lien vers la page d'authentification -->
+            <a href="./index.html" style=" padding: 10px 20px; font-size:20px; font-weight: bold; text-decoration: none; color: black;">Annuler</a>
         </form>
     </main>
 
