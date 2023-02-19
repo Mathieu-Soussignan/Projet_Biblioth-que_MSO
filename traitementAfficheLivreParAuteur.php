@@ -18,13 +18,21 @@
     <?php
     if (isset($_POST['Nom_auteur'])) {
 
-        $connex = mysqli_connect('localhost', 'root', '', 'bdp7');
+        $dsn = 'mysql:host=localhost;dbname=bdp7;charset=utf8';
+        $user = 'root';
+        $password = '';
 
-        $Nom_auteur = $_POST['Nom_auteur'];
+        try {
+            $pdo = new PDO($dsn, $user, $password);
+            $Nom_auteur = $_POST['Nom_auteur'];
 
-        $query = "SELECT * FROM livre WHERE Nom_auteur = '$Nom_auteur'";
-        $result = mysqli_query($connex, $query); ?>
-
+            $stmt = $pdo->prepare("SELECT * FROM livre WHERE Nom_auteur = ?");
+            $stmt->execute([$Nom_auteur]);
+            $result = $stmt->fetchAll(PDO::FETCH_OBJ);
+        } catch (PDOException $e) {
+            echo 'Connexion échouée : ' . $e->getMessage();
+        }
+    ?>
         <table>
             <tr>
                 <th>ISBN</th>
@@ -39,26 +47,25 @@
                 <th>Prix</th>
                 <th>Langue</th>
             </tr>
-        <?php
-        while ($row = mysqli_fetch_array($result)) {
-            echo "<tr>";
-            echo "<td>" . $row['ISBN'] . "</td>";
-            echo "<td>" . $row['Titre'] . "</td>";
-            echo "<td>" . $row['Theme'] . "</td>";
-            echo "<td>" . $row['Nb_pages'] . "</td>";
-            echo "<td>" . $row['Format'] . "</td>";
-            echo "<td>" . $row['Nom_auteur'] . "</td>";
-            echo "<td>" . $row['Prenom_auteur'] . "</td>";
-            echo "<td>" . $row['Editeur'] . "</td>";
-            echo "<td>" . $row['Annee_edition'] . "</td>";
-            echo "<td>" . $row['Prix'] . "</td>";
-            echo "<td>" . $row['Langue'] . "</td";
-            echo "</tr>";
-        }
-        mysqli_close($connex);
-    }
-        ?>
+            <?php
+            foreach ($result as $row) {
+                echo "<tr>";
+                echo "<td>" . $row->ISBN . "</td>";
+                echo "<td>" . $row->Titre . "</td>";
+                echo "<td>" . $row->Theme . "</td>";
+                echo "<td>" . $row->Nb_pages . "</td>";
+                echo "<td>" . $row->Format . "</td>";
+                echo "<td>" . $row->Nom_auteur . "</td>";
+                echo "<td>" . $row->Prenom_auteur . "</td>";
+                echo "<td>" . $row->Editeur . "</td>";
+                echo "<td>" . $row->Annee_edition . "</td>";
+                echo "<td>" . $row->Prix . "</td>";
+                echo "<td>" . $row->Langue . "</td>";
+                echo "</tr>";
+            }
+            ?>
         </table>
+    <?php } ?>
 </body>
 
 </html>

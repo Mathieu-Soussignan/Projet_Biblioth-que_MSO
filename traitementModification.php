@@ -6,28 +6,29 @@ $user = "root";
 $password = "";
 $dbname = "bdp7";
 
-$connex = mysqli_connect('localhost', 'root', '', 'bdp7');
-
-if (!$connex) {
-    die("Connection failed: " . mysqli_connect_error());
+try {
+    $pdo = new PDO("mysql:host=$host;dbname=$dbname", $user, $password);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    die("Erreur : " . $e->getMessage());
 }
 
-// Récupération de l'email et du nouveau mot de passe entré par l'utilisateur
 $mail = $_POST['mail'];
 $newPassword = $_POST['newPassword'];
 
-// Vérification de l'existence de l'email dans la base de données
-$query = "SELECT * FROM user WHERE mail='$mail'";
-$result = mysqli_query($connex, $query);
+$query = $pdo->prepare("SELECT * FROM user WHERE mail=:mail");
+$query->bindParam(':mail', $mail);
+$query->execute();
 
-if (mysqli_num_rows($result) > 0) {
+if ($query->rowCount() > 0) {
 
-    // Enregistrement du nouveau mot de passe dans la base de données pour l'utilisateur correspondant à l'email
-    $updateQuery = "UPDATE user SET mdp='$newPassword' WHERE mail='$mail'";
-    mysqli_query($connex, $updateQuery);
+
+    $updateQuery = $pdo->prepare("UPDATE user SET mdp=:mdp WHERE mail=:mail");
+    $updateQuery->bindParam(':mdp', $newPassword);
+    $updateQuery->bindParam(':mail', $mail);
+    $updateQuery->execute();
 
     echo "<p style='font-size: 16px;'>Votre mot de passe a bien été modifié.</p>";
-    mysqli_close($connex);
 }
 ?>
 

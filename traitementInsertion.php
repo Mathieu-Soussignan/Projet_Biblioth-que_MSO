@@ -16,7 +16,10 @@
         && isset($_POST['Format']) && isset($_POST['Nom_auteur']) && isset($_POST['Prenom_auteur']) && isset($_POST['Editeur'])
         && isset($_POST['Annee_edition']) && isset($_POST['Prix']) && isset($_POST['Langue'])
     ) {
-        $connex = mysqli_connect('localhost', 'root', '', 'bdp7');
+        $host = "localhost";
+        $dbname = "bdp7";
+        $user = "root";
+        $password = "";
         $ISBN = $_POST['ISBN'];
         $Titre = $_POST['Titre'];
         $Theme = $_POST['Theme'];
@@ -29,17 +32,16 @@
         $Langue = $_POST['Langue'];
         $Editeur = $_POST['Editeur'];
 
-        $query = "INSERT INTO livre (ISBN, Titre, Theme, Nb_pages, Format, Nom_auteur, Prenom_auteur, Annee_edition, Prix, Langue, Editeur) 
-            VALUES ('$ISBN', '$Titre', '$Theme', '$Nb_pages', '$Format', '$Nom_auteur', '$Prenom_auteur', '$Annee_edition', '$Prix', '$Langue', '$Editeur')";
-        $result = mysqli_query($connex, $query);
-
-        if ($result) {
-
+        try {
+            $pdo = new PDO("mysql:host=$host;dbname=$dbname", $user, $password);
+            $stmt = $pdo->prepare("INSERT INTO livre (ISBN, Titre, Theme, Nb_pages, Format, Nom_auteur, Prenom_auteur, Annee_edition, Prix, Langue, Editeur) 
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            $stmt->execute([$ISBN, $Titre, $Theme, $Nb_pages, $Format, $Nom_auteur, $Prenom_auteur, $Annee_edition, $Prix, $Langue, $Editeur]);
             header("Location: ./afficheLivre.php");
-        } else {
-            echo "Erreur lors de l'ajout du livre : " . mysqli_error($connex);
+        } catch (PDOException $e) {
+            echo "Erreur lors de l'ajout du livre : " . $e->getMessage();
         }
-        mysqli_close($connex);
+        $pdo = null;
     }
     ?>
     <footer>

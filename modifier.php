@@ -16,13 +16,26 @@
 
         <h1 class="titrePage">Edition d'un ouvrage</h1>
         <?php
-        $connex = mysqli_connect('localhost', 'root', '', 'bdp7');
-        $id = $_GET['id'];
-        $query = "SELECT * FROM livre WHERE id = '$id'";
-        $result = mysqli_query($connex, $query);
-        $livre = mysqli_fetch_array($result);
-        mysqli_close($connex);
+        $dsn = 'mysql:host=localhost;dbname=bdp7';
+        $username = 'root';
+        $password = '';
+        $options = array(
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+        );
 
+        try {
+            $connex = new PDO($dsn, $username, $password, $options);
+
+            $id = $_GET['id'];
+            $query = "SELECT * FROM livre WHERE id = ?";
+            $stmt = $connex->prepare($query);
+            $stmt->execute([$id]);
+            $livre = $stmt->fetch();
+
+            $connex = null;
+        } catch (PDOException $e) {
+            echo "Connection failed: " . $e->getMessage();
+        }
         ?>
         <form action="traitementModifier.php" method="POST">
             <input type="hidden" name="id" value="<?php echo $livre['id']; ?>">

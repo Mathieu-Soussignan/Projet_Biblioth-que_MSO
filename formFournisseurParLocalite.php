@@ -11,13 +11,13 @@
 
 <body>
     <header>
-        <h1 class="titrePage">Affichage d'un livre par Titre</h1>
+        <h1 class="titrePage">Affichage d'un fournisseur par localité</h1>
         <?php include "header.php"; ?>
     </header>
     <main>
-        <form action="./traitementAfficheLivreParTitre.php" method="post">
-            <select id="Titre" name="Titre">
-                <option value="">--Choisir un Titre--</option>
+        <form action="./traitementAfficheFournisseurParLocalite.php" method="POST">
+            <select id="localite" name="localite">
+                <option value="">--Choisir une localité--</option>
                 <?php
                 $dsn = 'mysql:host=localhost;dbname=bdp7;charset=utf8';
                 $user = 'root';
@@ -25,9 +25,9 @@
 
                 try {
                     $pdo = new PDO($dsn, $user, $password);
-                    $stmt = $pdo->query("SELECT DISTINCT Titre FROM livre");
+                    $stmt = $pdo->query("SELECT DISTINCT Localite FROM fournisseur");
                     while ($row = $stmt->fetch()) {
-                        echo '<option value="' . $row['Titre'] . '">' . $row['Titre'] . '</option>';
+                        echo '<option value="' . $row['Localite'] . '">' . $row['Localite'] . '</option>';
                     }
                 } catch (PDOException $e) {
                     echo "Erreur : " . $e->getMessage();
@@ -41,6 +41,7 @@
             <!-- lien vers la page d'authentification -->
             <a href="./accueil.php" style=" padding: 10px 20px; font-size:20px; font-weight: bold; text-decoration: none; color: black;">Annuler</a>
         </form>
+
     </main>
     <footer>
         <p>Copyright ©2023 Bibliothèque</p>

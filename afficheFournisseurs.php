@@ -18,19 +18,16 @@
     <main>
         <table>
             <tr>
-                <th>ISBN</th>
-                <th>Titre</th>
-                <th>Thème</th>
-                <th>Nb_pages</th>
-                <th>Format</th>
-                <th>Nom auteur</th>
-                <th>Prénom auteur</th>
-                <th>Editeur</th>
-                <th>Année édition</th>
-                <th>Prix</th>
-                <th>Langue</th>
-                <th>Modifier</th>
-                <th>Supprimer</th>
+                <th>Code fournisseur</th>
+                <th>Raison Sociale</th>
+                <th>Rue fournisseur</th>
+                <th>Code postal</th>
+                <th>Localité</th>
+                <th>Pays</th>
+                <th>Tel fournisseur</th>
+                <th>Url fournisseur</th>
+                <th>Email fournisseur</th>
+                <th>Réseau social Fournisseur</th>
             </tr>
             <?php
 
@@ -40,36 +37,35 @@
             $pdo = new PDO($dsn, $user, $password);
 
 
-            $query = "SELECT * FROM livre";
+            $query = "SELECT * FROM fournisseur";
             $stmt = $pdo->query($query);
 
 
             while ($row = $stmt->fetch(PDO::FETCH_OBJ)) {
                 echo "<tr>";
-                echo "<td>" . $row->ISBN . "</td>";
-                echo "<td>" . $row->Titre . "</td>";
-                echo "<td>" . $row->Theme . "</td>";
-                echo "<td>" . $row->Nb_pages . "</td>";
-                echo "<td>" . $row->Format . "</td>";
-                echo "<td>" . $row->Nom_auteur . "</td>";
-                echo "<td>" . $row->Prenom_auteur . "</td>";
-                echo "<td>" . $row->Editeur . "</td>";
-                echo "<td>" . $row->Annee_edition . "</td>";
-                echo "<td>" . $row->Prix . "</td>";
-                echo "<td>" . $row->Langue . "</td>";
-                echo "<td class='pencil'><a href='modifier.php?id=" . $row->id . "' style='color: black;'><i class='fa fa-pencil-alt'></i></a></td>";
-                echo "<td class='trash'><a href='javascript:void(0)' onclick='confirmDelete(" . $row->id . ")' style='color: red;'><i class='fa fa-trash'></i></a></td>";
+                echo "<td>" . $row->Code_fournisseur . "</td>";
+                echo "<td>" . $row->Raison_sociale . "</td>";
+                echo "<td>" . $row->Rue_fournisseur . "</td>";
+                echo "<td>" . $row->Code_postal . "</td>";
+                echo "<td>" . $row->Localite . "</td>";
+                echo "<td>" . $row->Pays . "</td>";
+                echo "<td>" . $row->Tel_fournisseur . "</td>";
+                echo "<td>" . $row->Url_fournisseur . "</td>";
+                echo "<td>" . $row->Email_fournisseur . "</td>";
+                echo "<td>" . $row->Reseau_fournisseur . "</td>";
+                // echo "<td class='pencil'><a href='modifier.php?id=" . $row->id . "' style='color: black;'><i class='fa fa-pencil-alt'></i></a></td>";
+                // echo "<td class='trash'><a href='javascript:void(0)' onclick='confirmDelete(" . $row->id . ")' style='color: red;'><i class='fa fa-trash'></i></a></td>";
                 echo "</tr>";
             }
             $pdo = null;
             ?>
-            <script>
+            <!-- <script>
                 function confirmDelete(id) {
                     if (confirm("Êtes-vous sûr de vouloir supprimer ce livre ?")) {
                         window.location.href = "supprimer.php?id=" + id + "&action=delete";
                     }
                 }
-            </script>
+            </script> -->
         </table>
     </main>
     <footer>

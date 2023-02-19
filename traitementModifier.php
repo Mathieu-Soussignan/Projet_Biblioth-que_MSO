@@ -12,42 +12,52 @@
 <body>
     <?php
     if (
-        
         isset($_POST['ISBN']) && isset($_POST['Titre']) && isset($_POST['Theme']) && isset($_POST['Nb_pages'])
         && isset($_POST['Format']) && isset($_POST['Nom_auteur']) && isset($_POST['Prenom_auteur']) && isset($_POST['Editeur'])
         && isset($_POST['Annee_edition']) && isset($_POST['Prix']) && isset($_POST['Langue'])
     ) {
-        $connex = mysqli_connect('localhost', 'root', '', 'bdp7');
+        $host = "localhost";
+        $dbname = "bdp7";
+        $user = "root";
+        $password = "";
 
-        $id = $_POST['id'];
-        $ISBN = $_POST['ISBN'];
-        $Titre = $_POST['Titre'];
-        $Theme = $_POST['Theme'];
-        $Nb_pages = $_POST['Nb_pages'];
-        $Format = $_POST['Format'];
-        $Nom_auteur = $_POST['Nom_auteur'];
-        $Prenom_auteur = $_POST['Prenom_auteur'];
-        $Annee_edition = $_POST['Annee_edition'];
-        $Prix = $_POST['Prix'];
-        $Langue = $_POST['Langue'];
-        $Editeur = $_POST['Editeur'];
-
-        // echo $ISBN . "<br>" . $Titre . "<br>" . $Theme . "<br>" . $Nb_pages . "<br>" . $Format . "<br>" . $Nom_auteur . "<br>" . $Prenom_auteur . "<br>" . $Annee_edition . "<br>" . $Prix . "<br>" . $Langue . "<br>";
-        // echo "id : " . $id . "<br>";
-
-        $query = "UPDATE livre SET ISBN = '$ISBN', Titre = '$Titre', Theme = '$Theme', Nb_pages = '$Nb_pages', 
-        Format = '$Format', Nom_auteur = '$Nom_auteur', Prenom_auteur = '$Prenom_auteur', Annee_edition = '$Annee_edition', 
-        Prix = '$Prix', Langue = '$Langue', Editeur = '$Editeur' WHERE id = '$id'";
-        $result = mysqli_query($connex, $query);
-
-        if ($result) {
-
+        try {
+            $connex = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $user, $password);
+            $connex->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $id = $_POST['id'];
+            $ISBN = $_POST['ISBN'];
+            $Titre = $_POST['Titre'];
+            $Theme = $_POST['Theme'];
+            $Nb_pages = $_POST['Nb_pages'];
+            $Format = $_POST['Format'];
+            $Nom_auteur = $_POST['Nom_auteur'];
+            $Prenom_auteur = $_POST['Prenom_auteur'];
+            $Annee_edition = $_POST['Annee_edition'];
+            $Prix = $_POST['Prix'];
+            $Langue = $_POST['Langue'];
+            $Editeur = $_POST['Editeur'];
+            $query = "UPDATE livre SET ISBN = :ISBN, Titre = :Titre, Theme = :Theme, Nb_pages = :Nb_pages, 
+                  Format = :Format, Nom_auteur = :Nom_auteur, Prenom_auteur = :Prenom_auteur, Annee_edition = :Annee_edition, 
+                  Prix = :Prix, Langue = :Langue, Editeur = :Editeur WHERE id = :id";
+            $stmt = $connex->prepare($query);
+            $stmt->bindParam(':ISBN', $ISBN);
+            $stmt->bindParam(':Titre', $Titre);
+            $stmt->bindParam(':Theme', $Theme);
+            $stmt->bindParam(':Nb_pages', $Nb_pages);
+            $stmt->bindParam(':Format', $Format);
+            $stmt->bindParam(':Nom_auteur', $Nom_auteur);
+            $stmt->bindParam(':Prenom_auteur', $Prenom_auteur);
+            $stmt->bindParam(':Annee_edition', $Annee_edition);
+            $stmt->bindParam(':Prix', $Prix);
+            $stmt->bindParam(':Langue', $Langue);
+            $stmt->bindParam(':Editeur', $Editeur);
+            $stmt->bindParam(':id', $id);
+            $stmt->execute();
             header("Location: ./afficheLivre.php");
-        } else {
-            echo "Erreur lors de la modification d'un livre : " . mysqli_error($connex);
+        } catch (PDOException $e) {
+            echo "Erreur lors de la modification d'un livre : " . $e->getMessage();
         }
-        mysqli_close($connex);
-     }
+    }
     ?>
     <footer>
         <p>Copyright ©2023 Bibliothèque</p>

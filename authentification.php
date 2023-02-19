@@ -12,27 +12,38 @@
 <body>
     <main>
         <?php
-
         session_start();
 
-        if (
-            isset($_POST['mail']) && isset($_POST['mdp'])
-        ) {
+        if (isset($_POST['mail']) && isset($_POST['mdp'])) {
+            $host = "localhost";
+            $db_name = "bdp7";
+            $username = "root";
+            $password = "";
+            $dsn = "mysql:host=$host;dbname=$db_name";
+            $options = array(
+                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+            );
 
-            $connex = mysqli_connect("localhost", "root", "", "bdp7");
+            try {
+                $pdo = new PDO($dsn, $username, $password, $options);
+            } catch (PDOException $e) {
+                echo "Erreur : " . $e->getMessage();
+            }
 
             $mail = $_POST['mail'];
             $mdp = $_POST['mdp'];
 
+            $query = "SELECT * FROM user WHERE mail=:mail AND mdp=:mdp";
+            $stmt = $pdo->prepare($query);
+            $stmt->bindParam(':mail', $mail);
+            $stmt->bindParam(':mdp', $mdp);
+            $stmt->execute();
 
-            $query = "SELECT * FROM user WHERE mail='$mail' AND mdp='$mdp'";
-            $result = mysqli_query($connex, $query);
-            $donnee = mysqli_fetch_array($result);
+            $donnee = $stmt->fetch();
+
             if ($donnee) {
-
-                $nom = $donnee[1];
-                $prenom = $donnee[2];
-                // echo $nom. " " . $prenom;
+                $nom = $donnee['nom'];
+                $prenom = $donnee['prenom'];
 
                 $_SESSION['nom'] = $nom;
                 $_SESSION['prenom'] = $prenom;
@@ -44,7 +55,7 @@
                 header("Location: index.html");
             }
 
-            mysqli_close($connex);
+            $pdo = null;
         };
         ?>
 

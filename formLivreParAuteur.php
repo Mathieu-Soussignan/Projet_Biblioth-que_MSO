@@ -16,8 +16,25 @@
     </header>
     <main>
         <form action="./traitementAfficheLivreParAuteur.php" method="POST">
-            <label for="Nom_auteur">Nom auteur :</label>
-            <input type="text" id="Nom_auteur" name="Nom_auteur" required>
+            <select id="Nom_auteur" name="Nom_auteur">
+                <option value="">--Choisir un Auteur--</option>
+                <?php
+                $dsn = 'mysql:host=localhost;dbname=bdp7;charset=utf8';
+                $user = 'root';
+                $password = '';
+
+                try {
+                    $pdo = new PDO($dsn, $user, $password);
+                    $stmt = $pdo->query("SELECT DISTINCT Nom_auteur FROM livre");
+                    while ($row = $stmt->fetch()) {
+                        echo '<option value="' . $row['Nom_auteur'] . '">' . $row['Nom_auteur'] . '</option>';
+                    }
+                } catch (PDOException $e) {
+                    echo "Erreur : " . $e->getMessage();
+                }
+                $pdo = null;
+                ?>
+            </select>
             <br><br>
             <input type="submit" value="Rechercher">
             <br>

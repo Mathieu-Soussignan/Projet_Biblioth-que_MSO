@@ -11,13 +11,13 @@
 
 <body>
     <header>
-        <h1 class="titrePage">Affichage d'un livre par Titre</h1>
+        <h1 class="titrePage">Affichage d'un fournisseur par raison social</h1>
         <?php include "header.php"; ?>
     </header>
     <main>
-        <form action="./traitementAfficheLivreParTitre.php" method="post">
-            <select id="Titre" name="Titre">
-                <option value="">--Choisir un Titre--</option>
+        <form action="./traitementAfficheFournisseurParRaison.php" method="POST">
+            <select id="Raison_sociale" name="Raison_sociale">
+                <option value="">--Choisir une raison sociale--</option>
                 <?php
                 $dsn = 'mysql:host=localhost;dbname=bdp7;charset=utf8';
                 $user = 'root';
@@ -25,9 +25,9 @@
 
                 try {
                     $pdo = new PDO($dsn, $user, $password);
-                    $stmt = $pdo->query("SELECT DISTINCT Titre FROM livre");
+                    $stmt = $pdo->query("SELECT DISTINCT Raison_sociale FROM fournisseur");
                     while ($row = $stmt->fetch()) {
-                        echo '<option value="' . $row['Titre'] . '">' . $row['Titre'] . '</option>';
+                        echo '<option value="' . $row['Raison_sociale'] . '">' . $row['Raison_sociale'] . '</option>';
                     }
                 } catch (PDOException $e) {
                     echo "Erreur : " . $e->getMessage();

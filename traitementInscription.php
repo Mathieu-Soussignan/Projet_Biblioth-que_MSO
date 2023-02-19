@@ -10,32 +10,40 @@
 
 <body>
     <?php
-    // $mail = $_POST['mail'];
-    // $nom = $_POST['nom'];
-    // $prenom = $_POST['prenom'];
-    // $mdp = $_POST['mdp'];
-    if (
-        isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['mail']) && isset($_POST['mdp'])   
-    ) {
-        $connex = mysqli_connect('localhost', 'root', '', 'bdp7');
-        $nom =   $_POST['nom'];
+    if (isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['mail']) && isset($_POST['mdp'])) {
+        $host = 'localhost';
+        $db   = 'bdp7';
+        $user = 'root';
+        $pass = '';
+        $charset = 'utf8mb4';
+
+        $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
+        $options = [
+            PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+            PDO::ATTR_EMULATE_PREPARES   => false,
+        ];
+
+        try {
+            $pdo = new PDO($dsn, $user, $pass, $options);
+        } catch (\PDOException $e) {
+            throw new \PDOException($e->getMessage(), (int)$e->getCode());
+        }
+
+        $nom = $_POST['nom'];
         $prenom = $_POST['prenom'];
         $mail = $_POST['mail'];
         $mdp = $_POST['mdp'];
-        echo "apres la connexion";
 
-        $query = "INSERT INTO user (nom, prenom, mail, mdp) 
-        VALUES ('$nom', '$prenom', '$mail', '$mdp')";
-        $result = mysqli_query($connex, $query);
+        $query = "INSERT INTO user (nom, prenom, mail, mdp) VALUES (?, ?, ?, ?)";
+        $stmt = $pdo->prepare($query);
+        $stmt->execute([$nom, $prenom, $mail, $mdp]);
 
-
-        if ($result) {
-
+        if ($stmt) {
             header("Location: index.html");
         } else {
-            echo "Erreur lors de l'ajout d'un utilisateur : " . mysqli_error($connex);
+            echo "Erreur lors de l'ajout d'un utilisateur : " . $pdo->errorInfo()[2];
         }
-        mysqli_close($connex);
     }
     ?>
     <footer>

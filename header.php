@@ -37,6 +37,16 @@
                            <li><a href="./formLivreParTitre.php">Afficher livres par Titre</a></li>
                        </ul>
                    </div>
+               <li><a href="#">Fournisseurs</a>
+                   <div class="options">
+                       <ul>
+                           <li><a href="./afficheFournisseurs.php">Afficher les fournisseurs</a></li>
+                           <li><a href="./formAddFournisseur.php">Ajouter un fournisseur</a></li>
+                           <li><a href="./formFournisseurParRaison.php">Afficher fournisseur par Raison sociale</a></li>
+                           <li><a href="./formFournisseurParPays.php">Afficher fournisseur par pays</a></li>
+                           <li><a href="./formFournisseurParLocalite.php">Afficher fournisseur par localité</a></li>
+                       </ul>
+                   </div>
                </li>
                <li id="toggle">
                    <i class="fas fa-moon"></i>

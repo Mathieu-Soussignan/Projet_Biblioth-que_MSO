@@ -18,7 +18,7 @@
         <?php include "header.php"; ?>
     </header>
     <main>
-        <div class="slider">
+        <!-- <div class="slider">
             <div class="contents">
                 <div class="content">
                     <img src="./img/book.jpg" alt="">
@@ -33,16 +33,7 @@
                     <img src="./img/harry_potter_saga.png" alt="">
                 </div>
                 <div class="content">
-                    <img src="./img/harry_potter_saga_2.png" alt="">
-                </div>
-                <div class="content">
-                    <img src="./img/candle_branding.png" alt="">
-                </div>
-                <div class="content">
                     <img src="./img/dark_cosmic.png" alt="">
-                </div>
-                <div class="content">
-                    <img src="./img/pirate_boat.png" alt="">
                 </div>
             </div>
             <div class="directions">
@@ -51,6 +42,21 @@
                 </div>
                 <div class="right">
                     <i>&#155;</i>
+                </div>
+            </div>
+        </div> -->
+        <div class="slider">
+            <img src="img/book.jpg" alt="img1" class="img__slider active" />
+            <img src="img/dark_cosmic.png" alt="img2" class="img__slider" />
+            <img src="img/harry_potter_saga.png" alt="img3" class="img__slider" />
+            <img src="./img/Livre-ouvert.jpg" alt="" class="img__slider" />
+            <img src="./img/Livre-ouvert_2.jpg" alt="" class="img__slider" />
+            <div class="directions">
+                <div class="suivant">
+                    <i class="fas fa-chevron-circle-right"></i>
+                </div>
+                <div class="precedent">
+                    <i class="fas fa-chevron-circle-left"></i>
                 </div>
             </div>
         </div>
