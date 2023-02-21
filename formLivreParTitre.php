@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Page d'accueil</title>
     <link rel="stylesheet" type="text/css" href="./css/form.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 </head>
 
 <body>
@@ -16,8 +17,9 @@
     </header>
     <main>
         <form action="./traitementAfficheLivreParTitre.php" method="post">
-            <select id="Titre" name="Titre">
-                <option value="">--Choisir un Titre--</option>
+            <!-- <select id="Titre" name="Titre"> -->
+            <select id="Titre" name="Titre" class="form-select" aria-label="Default select example">
+                <option selected>--Choisir un Titre--</option>
                 <?php
                 $dsn = 'mysql:host=localhost;dbname=bdp7;charset=utf8';
                 $user = 'root';

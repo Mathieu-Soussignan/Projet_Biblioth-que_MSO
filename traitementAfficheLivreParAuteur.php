@@ -33,21 +33,24 @@
             echo 'Connexion échouée : ' . $e->getMessage();
         }
     ?>
-        <table>
-            <tr>
-                <th>ISBN</th>
-                <th>Titre</th>
-                <th>Thème</th>
-                <th>Nb_pages</th>
-                <th>Format</th>
-                <th>Nom auteur</th>
-                <th>Prénom auteur</th>
-                <th>Editeur</th>
-                <th>Année édition</th>
-                <th>Prix</th>
-                <th>Langue</th>
-            </tr>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>ISBN</th>
+                    <th>Titre</th>
+                    <th>Thème</th>
+                    <th>Nb_pages</th>
+                    <th>Format</th>
+                    <th>Nom auteur</th>
+                    <th>Prénom auteur</th>
+                    <th>Editeur</th>
+                    <th>Année édition</th>
+                    <th>Prix</th>
+                    <th>Langue</th>
+                </tr>
+            </thead>
             <?php
+            echo "<tbody>";
             foreach ($result as $row) {
                 echo "<tr>";
                 echo "<td>" . $row->ISBN . "</td>";
@@ -63,6 +66,8 @@
                 echo "<td>" . $row->Langue . "</td>";
                 echo "</tr>";
             }
+            $pdo = null;
+            echo "</tbody>";
             ?>
         </table>
     <?php } ?>

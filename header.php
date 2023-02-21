@@ -8,12 +8,14 @@
        <title>Page d'accueil</title>
        <link rel="stylesheet" type="text/css" href="./css/style.css">
        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
        <script src="./js/app.js" defer></script>
+       <script src="./js/slider.js" defer></script>
    </head>
 
    <header>
        <div style="display: flex; align-items: center; justify-content: space-between;">
-           <p id="started" style="margin: 0; font-size: 25px; font-weight: bold;">
+           <p id="started" style="margin: 0; font-size: 25px; font-weight: bold; margin: 0 0 0 20px;">
                <?php
                 session_start();
                 $nom = $_SESSION['nom'];
@@ -35,6 +37,7 @@
                            <li><a href="./formAddLivre.php">Ajouter un livre</a></li>
                            <li><a href="./formLivreParAuteur.php">Afficher livres par auteur</a></li>
                            <li><a href="./formLivreParTitre.php">Afficher livres par Titre</a></li>
+                           <li><a href="./afficheAPI.php">Affichage Livres via une API</a></li>
                        </ul>
                    </div>
                <li><a href="#">Fournisseurs</a>

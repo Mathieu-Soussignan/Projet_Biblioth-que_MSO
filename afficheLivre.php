@@ -8,6 +8,7 @@
     <title>Liste des livres</title>
     <link rel="stylesheet" type="text/css" href="./css/style.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 </head>
 
 <body>
@@ -16,22 +17,25 @@
         <?php include "header.php"; ?>
     </header>
     <main>
-        <table>
-            <tr>
-                <th>ISBN</th>
-                <th>Titre</th>
-                <th>Thème</th>
-                <th>Nb_pages</th>
-                <th>Format</th>
-                <th>Nom auteur</th>
-                <th>Prénom auteur</th>
-                <th>Editeur</th>
-                <th>Année édition</th>
-                <th>Prix</th>
-                <th>Langue</th>
-                <th>Modifier</th>
-                <th>Supprimer</th>
-            </tr>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">ISBN</th>
+                    <th scope="col">Titre</th>
+                    <th scope="col">Thème</th>
+                    <th scope="col">Nb_pages</th>
+                    <th scope="col">Format</th>
+                    <th scope="col">Nom auteur</th>
+                    <th scope="col">Prénom auteur</th>
+                    <th scope="col">Editeur</th>
+                    <th scope="col">Année édition</th>
+                    <th scope="col">Prix</th>
+                    <th scope="col">Langue</th>
+                    <th scope="col">Modifier</th>
+                    <th scope="col">Supprimer</th>
+                </tr>
+            </thead>
+
             <?php
 
             $dsn = 'mysql:host=localhost;dbname=bdp7';
@@ -43,7 +47,7 @@
             $query = "SELECT * FROM livre";
             $stmt = $pdo->query($query);
 
-
+            echo "<tbody>";
             while ($row = $stmt->fetch(PDO::FETCH_OBJ)) {
                 echo "<tr>";
                 echo "<td>" . $row->ISBN . "</td>";
@@ -62,6 +66,7 @@
                 echo "</tr>";
             }
             $pdo = null;
+            echo "</tbody>";
             ?>
             <script>
                 function confirmDelete(id) {

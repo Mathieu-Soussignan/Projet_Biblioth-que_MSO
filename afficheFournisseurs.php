@@ -16,19 +16,22 @@
         <?php include "header.php"; ?>
     </header>
     <main>
-        <table>
-            <tr>
-                <th>Code fournisseur</th>
-                <th>Raison Sociale</th>
-                <th>Rue fournisseur</th>
-                <th>Code postal</th>
-                <th>Localité</th>
-                <th>Pays</th>
-                <th>Tel fournisseur</th>
-                <th>Url fournisseur</th>
-                <th>Email fournisseur</th>
-                <th>Réseau social Fournisseur</th>
-            </tr>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">Code fournisseur</th>
+                    <th scope="col">Raison Sociale</th>
+                    <th scope="col">Rue fournisseur</th>
+                    <th scope="col">Code postal</th>
+                    <th scope="col">Localité</th>
+                    <th scope="col">Pays</th>
+                    <th scope="col">Tel fournisseur</th>
+                    <th scope="col">Url fournisseur</th>
+                    <th scope="col">Email fournisseur</th>
+                    <th scope="col">Réseau social Fournisseur</th>
+                </tr>
+            </thead>
+
             <?php
 
             $dsn = 'mysql:host=localhost;dbname=bdp7';
@@ -40,7 +43,7 @@
             $query = "SELECT * FROM fournisseur";
             $stmt = $pdo->query($query);
 
-
+            echo "<tbody>";
             while ($row = $stmt->fetch(PDO::FETCH_OBJ)) {
                 echo "<tr>";
                 echo "<td>" . $row->Code_fournisseur . "</td>";
@@ -58,6 +61,7 @@
                 echo "</tr>";
             }
             $pdo = null;
+            echo "</tbody>";
             ?>
             <!-- <script>
                 function confirmDelete(id) {

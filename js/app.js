@@ -1,96 +1,49 @@
-    let cpt = 0;
-    let left = document.querySelector('.left');
-    let right = document.querySelector('.right');
-    let contents = document.querySelector('.contents');
-    let slider = document.querySelector('.slider');
+//     let cpt = 0;
+//     let left = document.querySelector('.left');
+//     let right = document.querySelector('.right');
+//     let contents = document.querySelector('.contents');
+//     let slider = document.querySelector('.slider');
     
-if (contents) {
+// if (contents) {
         
-    let sliders = Array.from(contents.children);
-    let screenWidth = slider.getBoundingClientRect().width;
-    right.addEventListener('click', avance);
-    left.addEventListener('click', recule);
-    let clock = setInterval(avance, 4000);
-    window.addEventListener('resize', () => {
-        screenWidth = slider.getBoundingClientRect().width;
-    })
-    slider.addEventListener('mouseover', stop);
-    slider.addEventListener('mouseout', start);
+//     let sliders = Array.from(contents.children);
+//     let screenWidth = slider.getBoundingClientRect().width;
+//     right.addEventListener('click', avance);
+//     left.addEventListener('click', recule);
+//     let clock = setInterval(avance, 4000);
+//     window.addEventListener('resize', () => {
+//         screenWidth = slider.getBoundingClientRect().width;
+//     })
+//     slider.addEventListener('mouseover', stop);
+//     slider.addEventListener('mouseout', start);
 
-function avance() {
-        cpt++;
-        if (cpt === sliders.length - 1) {
-            cpt = 0;
-        }
-        let decal = -screenWidth * cpt;
-        contents.style.transform = `translateX(${decal}px)`
-    }
+// function avance() {
+//         cpt++;
+//         if (cpt === sliders.length - 1) {
+//             cpt = 0;
+//         }
+//         let decal = -screenWidth * cpt;
+//         contents.style.transform = `translateX(${decal}px)`
+//     }
 
-function recule() {
-        cpt--;
-        if (cpt < 0) {
-            cpt = sliders.length - 1;
-        }
-        let decal = -screenWidth * cpt;
-        contents.style.transform = `translateX(${decal}px)`
-    }
+// function recule() {
+//         cpt--;
+//         if (cpt < 0) {
+//             cpt = sliders.length - 1;
+//         }
+//         let decal = -screenWidth * cpt;
+//         contents.style.transform = `translateX(${decal}px)`
+//     }
 
-function stop() {
-        clearInterval(clock);
-    }
+// function stop() {
+//         clearInterval(clock);
+//     }
 
-function start() {
-        console.log("inside start")
-        clock = setInterval(avance, 4000);
-    }
-}
-
-
-// -----------------------Test slider 3 --------------------------------------
-
-let img__slider = document.getElementsByClassName('img__slider');
-
-let etape = 0;
-
-let nbr__img = img__slider.length;
-
-let precedent = document.querySelector('.precedent');
-let suivant = document.querySelector('.suivant');
-
-function enleverActiveImages() {
-    for(let i = 0 ; i < nbr__img ; i++) {
-        img__slider[i].classList.remove('active');
-    }
-}
-
-suivant.addEventListener('click', function() {
-    etape++;
-    if(etape >= nbr__img) {
-        etape = 0;
-    }
-    enleverActiveImages();
-    img__slider[etape].classList.add('active');
-})
-
-precedent.addEventListener('click', function() {
-    etape--;
-    if(etape < 0) {
-        etape = nbr__img - 1;
-    }
-    enleverActiveImages();
-    img__slider[etape].classList.add('active');
-})
-
-setInterval(function() {
-    etape++;
-    if(etape >= nbr__img) {
-        etape = 0;
-    }
-    enleverActiveImages();
-    img__slider[etape].classList.add('active');
-}, 5000)
-
-///////////////////////////////////////////////////////////////////////////
+// function start() {
+//         console.log("inside start")
+//         clock = setInterval(avance, 4000);
+//     }
+// }
 
 document.getElementById("logout").addEventListener("click", function () {
     console.log("click")
@@ -141,6 +94,7 @@ document.getElementById("logout").addEventListener("click", function () {
     }
     DarkMode();
     });
+
 
 
 

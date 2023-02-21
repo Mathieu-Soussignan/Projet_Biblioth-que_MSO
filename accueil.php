@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Page d'accueil</title>
     <link rel="stylesheet" type="text/css" href="./css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
-
 </head>
 
 <body>
@@ -51,6 +51,8 @@
             <img src="img/harry_potter_saga.png" alt="img3" class="img__slider" />
             <img src="./img/Livre-ouvert.jpg" alt="" class="img__slider" />
             <img src="./img/Livre-ouvert_2.jpg" alt="" class="img__slider" />
+            <img src="./img/grid_1.png" alt="" class="img__slider" />
+            <img src="./img/Fantasy_library_of_books.png" alt="" class="img__slider" />
             <div class="directions">
                 <div class="suivant">
                     <i class="fas fa-chevron-circle-right"></i>

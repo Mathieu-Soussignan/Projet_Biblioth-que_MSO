@@ -34,20 +34,23 @@
         }
         $pdo = null;
     ?>
-        <table>
-            <tr>
-                <th>Code fournisseur</th>
-                <th>Raison Sociale</th>
-                <th>Rue fournisseur</th>
-                <th>Code postal</th>
-                <th>Localité</th>
-                <th>Pays</th>
-                <th>Tel fournisseur</th>
-                <th>Url fournisseur</th>
-                <th>Email fournisseur</th>
-                <th>Réseau social Fournisseur</th>
-            </tr>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Code fournisseur</th>
+                    <th>Raison Sociale</th>
+                    <th>Rue fournisseur</th>
+                    <th>Code postal</th>
+                    <th>Localité</th>
+                    <th>Pays</th>
+                    <th>Tel fournisseur</th>
+                    <th>Url fournisseur</th>
+                    <th>Email fournisseur</th>
+                    <th>Réseau social Fournisseur</th>
+                </tr>
+            </thead>
             <?php
+            echo "<tbody>";
             foreach ($result as $row) {
                 echo "<tr>";
                 echo "<td>" . $row->Code_fournisseur . "</td>";
@@ -62,6 +65,8 @@
                 echo "<td>" . $row->Reseau_fournisseur . "</td>";
                 echo "</tr>";
             }
+            $pdo = null;
+            echo "</tbody>";
             ?>
         </table>
     <?php } ?>
