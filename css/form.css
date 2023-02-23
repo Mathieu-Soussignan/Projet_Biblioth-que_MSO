@@ -119,6 +119,10 @@ footer {
 
 }
 
+p#end {
+    margin-top: 65px;
+}
+
 .slider {
     width: 600px;
     height: 400px;

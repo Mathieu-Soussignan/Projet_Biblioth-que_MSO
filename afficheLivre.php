@@ -14,30 +14,39 @@
 <body>
     <header>
         <h1 class="titrePage">Liste des livres</h1>
+        <?php
+        session_start();
+        if (!isset($_SESSION['role']) || $_SESSION['role'] != "1") {
+            header("Location: index.html");
+            exit;
+        }
+        ?>
+        <!-- fichier header chargé au démarrage de la page -->
         <?php include "header.php"; ?>
     </header>
     <main>
         <table class="table table-bordered">
             <thead>
                 <tr>
-                    <th scope="col">ISBN</th>
-                    <th scope="col">Titre</th>
-                    <th scope="col">Thème</th>
-                    <th scope="col">Nb_pages</th>
-                    <th scope="col">Format</th>
-                    <th scope="col">Nom auteur</th>
-                    <th scope="col">Prénom auteur</th>
-                    <th scope="col">Editeur</th>
-                    <th scope="col">Année édition</th>
-                    <th scope="col">Prix</th>
-                    <th scope="col">Langue</th>
-                    <th scope="col">Modifier</th>
-                    <th scope="col">Supprimer</th>
+                    <th scope="col" class="text-center">ISBN</th>
+                    <th scope="col" class="text-center">Titre</th>
+                    <th scope="col" class="text-center">Thème</th>
+                    <th scope="col" class="text-center">Nb_pages</th>
+                    <th scope="col" class="text-center">Format</th>
+                    <th scope="col" class="text-center">Nom auteur</th>
+                    <th scope="col" class="text-center">Prénom auteur</th>
+                    <th scope="col" class="text-center">Editeur</th>
+                    <th scope="col" class="text-center">Année édition</th>
+                    <th scope="col" class="text-center">Prix</th>
+                    <th scope="col" class="text-center">Langue</th>
+                    <?php if ($_SESSION['role'] == '1') { ?>
+                        <th scope="col" class="text-center">Modifier</th>
+                        <th scope="col" class="text-center">Supprimer</th>
+                    <?php } ?>
                 </tr>
             </thead>
 
             <?php
-
             $dsn = 'mysql:host=localhost;dbname=bdp7';
             $user = 'root';
             $password = '';
@@ -61,8 +70,11 @@
                 echo "<td>" . $row->Annee_edition . "</td>";
                 echo "<td>" . $row->Prix . "</td>";
                 echo "<td>" . $row->Langue . "</td>";
-                echo "<td class='pencil'><a href='modifier.php?id=" . $row->id . "' style='color: black;'><i class='fa fa-pencil-alt'></i></a></td>";
-                echo "<td class='trash'><a href='javascript:void(0)' onclick='confirmDelete(" . $row->id . ")' style='color: red;'><i class='fa fa-trash'></i></a></td>";
+                if ($_SESSION['role'] === 1) {
+                    echo "<td class='pencil'><a href='modifier.php?id=" . $row->id . "' style='color: black;'><i class='fa fa-pencil-alt'></i></a></td>";
+                    echo "<td class='trash'><a href='javascript:void(0)' onclick='confirmDelete(" . $row->id . ")' style='color: red;'><i class='fa fa-trash'></i></a></td>";
+                };
+
                 echo "</tr>";
             }
             $pdo = null;

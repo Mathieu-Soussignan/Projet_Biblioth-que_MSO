@@ -11,6 +11,13 @@
 </head>
 
 <body>
+    <?php
+    session_start();
+    if (!isset($_SESSION['role']) || $_SESSION['role'] != "1") {
+        header("Location: index.html");
+        exit;
+    }
+    ?>
     <main>
         <!-- lien vers la page d'authentification -->
         <a href="javascript:void(0)" onclick="if (confirm('Voulez-vous vraiment vous déconnecter ?')) { location.href='deconnexion.php'; }" style="display:inline-block; padding: 10px 20px; font-weight: bold; font-size:20px; text-decoration: none; color: black; background-color: #ddd; border-radius: 5px;">Déconnexion</a>
@@ -28,9 +35,9 @@
             $connex = new PDO($dsn, $username, $password, $options);
 
             $id = $_GET['id'];
-            $query = "SELECT * FROM livre WHERE id = ?";
+            $query = "SELECT * FROM livre WHERE id = :id";
             $stmt = $connex->prepare($query);
-            $stmt->execute([$id]);
+            $stmt->execute(['id' => $id]);
             $livre = $stmt->fetch();
 
             $connex = null;

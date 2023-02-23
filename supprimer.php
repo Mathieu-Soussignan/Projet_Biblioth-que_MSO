@@ -1,4 +1,9 @@
 <?php
+    session_start();
+    if (!isset($_SESSION['role']) || $_SESSION['role'] != "1") {
+        header("Location: index.html");
+        exit;
+    }
 // Connexion à la base de données pour récupérer les informations sur les livres
 
 try {

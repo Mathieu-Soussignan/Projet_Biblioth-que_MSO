@@ -11,6 +11,13 @@
 
 <body>
     <?php
+    session_start();
+    if (!isset($_SESSION['role']) || $_SESSION['role'] != "1") {
+        header("Location: index.html");
+        exit;
+    }
+    ?>
+    <?php
     if (
         isset($_POST['Code_fournisseur']) && isset($_POST['Raison_sociale']) && isset($_POST['Rue_fournisseur']) && isset($_POST['Code_postal'])
         && isset($_POST['Localite']) && isset($_POST['Pays']) && isset($_POST['Tel_fournisseur']) && isset($_POST['Url_fournisseur'])

@@ -94,8 +94,9 @@ tr:nth-child(even) {
 }
 
 
-h1 {
+h1.titrePage {
     text-align: center;
+    padding-top: 10px;
 }
 
 h2 {
@@ -196,7 +197,7 @@ i {
 }
 
 #ball.ball {
-    top : -1px;
+    top : 2px;
 }
 
 .active {
@@ -206,7 +207,7 @@ i {
 /* Slider */
 
 .slider {
-    height: 65vh;
+    height: 60vh;
     width: 600px;
     /* Ajout de la largeur pour centrer le slider */
     margin: 0 auto;

@@ -34,32 +34,45 @@
             $mail = $_POST['mail'];
             $mdp = $_POST['mdp'];
 
-            $query = "SELECT * FROM user WHERE mail=:mail AND mdp=:mdp";
+            $query = "SELECT * FROM user WHERE mail=:mail";
             $stmt = $pdo->prepare($query);
             $stmt->bindParam(':mail', $mail);
-            $stmt->bindParam(':mdp', $mdp);
+            // $stmt->bindParam(':mdp', $mdp);
             $stmt->execute();
 
             $donnee = $stmt->fetch();
 
             if ($donnee) {
-                $nom = $donnee['nom'];
-                $prenom = $donnee['prenom'];
+                // Vérifier si le mot de passe entré correspond au mot de passe stocké
+                if ($mdp === $donnee['mdp'] || password_verify($mdp, $donnee['mdp'])) {
+                    $nom = $donnee['nom'];
+                    $prenom = $donnee['prenom'];
+                    $role = $donnee['role'];
 
-                $_SESSION['nom'] = $nom;
-                $_SESSION['prenom'] = $prenom;
-                header("Location: accueil.php");
+                    $_SESSION['nom'] = $nom;
+                    $_SESSION['prenom'] = $prenom;
+                    $_SESSION['role'] = $role; 
+
+                    header("Location: ./accueil.php");
+                } else {
+                    $error = "Nom d'utilisateur ou mot de passe incorrect";
+                    echo "Redirection vers la page d'authentification en cours...";
+                    header("Location: index.html");
+                    exit;
+                }
+            } else {;
+                die("Erreur lors de l'exécution de la requête: " . $stmt->errorInfo()[2]);
                 exit;
-            } else {
-                $error = "Nom d'utilisateur ou mot de passe incorrect";
-                echo "Redirection vers la page d'authentification en cours...";
-                header("Location: index.html");
             }
-
-            $pdo = null;
-        };
+        }
+        //else {
+        //     $error = "Nom d'utilisateur ou mot de passe incorrect";
+        //     echo "Redirection vers la page d'authentification en cours...";
+        //     header("Location: index.html");
+        // }
+        $pdo = null;
+        // };
         ?>
-
         <?php if (isset($error)) { ?>
             <p><?php echo $error; ?></p>
         <?php } ?>

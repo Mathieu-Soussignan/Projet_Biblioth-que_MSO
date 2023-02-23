@@ -13,12 +13,20 @@
 <body>
     <header>
         <h1 class="titrePage">Affichage d'un fournisseur par raison social</h1>
+        <?php
+        session_start();
+        if (!isset($_SESSION['role']) || $_SESSION['role'] != "1") {
+            header("Location: index.html");
+            exit;
+        }
+        ?>
+        <!-- fichier header chargé au démarrage de la page -->
         <?php include "header.php"; ?>
     </header>
     <main>
         <form action="./traitementAfficheFournisseurParRaison.php" method="POST">
             <select id="Raison_sociale" name="Raison_sociale" class="form-select" aria-label="Default select example">
-                <option selected>--Choisir une raison sociale--</option>
+                <option selected class="text-center">----Choisir une raison sociale----</option>
                 <?php
                 $dsn = 'mysql:host=localhost;dbname=bdp7;charset=utf8';
                 $user = 'root';
@@ -44,7 +52,7 @@
         </form>
     </main>
     <footer>
-        <p>Copyright ©2023 Bibliothèque</p>
+        <p id="end">Copyright ©2023 Bibliothèque</p>
     </footer>
 </body>
 

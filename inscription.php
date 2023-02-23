@@ -12,6 +12,9 @@
 
 <body>
     <header>
+        <?php 
+        session_start();
+        ?>
         <h1 class="titrePage">Page d'inscription</h1>
     </header>
     <main>
@@ -29,7 +32,13 @@
             <input type="email" id="mail" name="mail" required>
             <br>
             <label for="password">Mot de passe :</label>
-            <input type="password" id="password" name="mdp" required>
+            <input type="password" id="password" name="mdp" required minlength="8">
+            <br>
+            <label for="role">Rôle :</label>
+            <select id="role" name="role" class="form-select" aria-label="Default select example">
+                <option value="1" selected class="text-center">Admin</option>
+                <option value="2" selected selected class="text-center">Utilisateur</option>
+            </select>
             <br><br>
 
             <input type="submit" value="S'inscrire">

@@ -12,23 +12,30 @@
 
 <body>
     <header>
-        <h1 class="titrePage">Liste des livres</h1>
+        <h1 class="titrePage">Liste des fournisseurs</h1>
+        <?php
+        session_start();
+        if (!isset($_SESSION['role']) || $_SESSION['role'] != "1") {
+            header("Location: index.html");
+            exit;
+        }
+        ?>
         <?php include "header.php"; ?>
     </header>
     <main>
         <table class="table table-bordered">
             <thead>
                 <tr>
-                    <th scope="col">Code fournisseur</th>
-                    <th scope="col">Raison Sociale</th>
-                    <th scope="col">Rue fournisseur</th>
-                    <th scope="col">Code postal</th>
-                    <th scope="col">Localité</th>
-                    <th scope="col">Pays</th>
-                    <th scope="col">Tel fournisseur</th>
-                    <th scope="col">Url fournisseur</th>
-                    <th scope="col">Email fournisseur</th>
-                    <th scope="col">Réseau social Fournisseur</th>
+                    <th scope="col" class="text-center">Code fournisseur</th>
+                    <th scope="col" class="text-center">Raison Sociale</th>
+                    <th scope="col" class="text-center">Rue fournisseur</th>
+                    <th scope="col" class="text-center">Code postal</th>
+                    <th scope="col" class="text-center">Localité</th>
+                    <th scope="col" class="text-center">Pays</th>
+                    <th scope="col" class="text-center">Tel fournisseur</th>
+                    <th scope="col" class="text-center">Url fournisseur</th>
+                    <th scope="col" class="text-center">Email fournisseur</th>
+                    <th scope="col" class="text-center">Réseau social Fournisseur</th>
                 </tr>
             </thead>
 

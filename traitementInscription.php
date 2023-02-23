@@ -33,11 +33,25 @@
         $nom = $_POST['nom'];
         $prenom = $_POST['prenom'];
         $mail = $_POST['mail'];
-        $mdp = $_POST['mdp'];
+        $mdp = password_hash($_POST['mdp'], PASSWORD_DEFAULT);
+        $role = $_POST['role'];
 
-        $query = "INSERT INTO user (nom, prenom, mail, mdp) VALUES (?, ?, ?, ?)";
+        // vérifie si le mot de passe saisi correspond au hachage stocké
+        if (password_verify($entered_password, $hashed_password)) {
+            echo 'Le mot de passe est correct !';
+        } else {
+            echo 'Le mot de passe est incorrect!';
+        }
+
+        $query = "INSERT INTO user (nom, prenom, mail, mdp, role) VALUES (:nom, :prenom, :mail, :mdp, :role)";
         $stmt = $pdo->prepare($query);
-        $stmt->execute([$nom, $prenom, $mail, $mdp]);
+        $stmt->execute([
+            ':nom' => $nom,
+            ':prenom' => $prenom,
+            ':mail' => $mail,
+            ':mdp' => $mdp,
+            ':role' => $role
+        ]);
 
         if ($stmt) {
             header("Location: index.html");
@@ -45,6 +59,7 @@
             echo "Erreur lors de l'ajout d'un utilisateur : " . $pdo->errorInfo()[2];
         }
     }
+
     ?>
     <footer>
         <p>Copyright ©2023 Bibliothèque</p>

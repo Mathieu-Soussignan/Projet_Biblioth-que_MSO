@@ -17,7 +17,7 @@
        <div style="display: flex; align-items: center; justify-content: space-between;">
            <p id="started" style="margin: 0; font-size: 25px; font-weight: bold; margin: 0 0 0 20px;">
                <?php
-                session_start();
+                // session_start();
                 $nom = $_SESSION['nom'];
                 $prenom = $_SESSION['prenom'];
                 echo $nom . "&nbsp;" . $prenom;
@@ -34,7 +34,13 @@
                    <div class="options">
                        <ul>
                            <li><a href="./afficheLivre.php">Afficher les livres</a></li>
-                           <li><a href="./formAddLivre.php">Ajouter un livre</a></li>
+                           <?php
+                            // Vérifiez si l'utilisateur est connecté en tant qu'administrateur
+                            if (isset($_SESSION['role']) && $_SESSION['role'] == '1') {
+                                // Affichez les options d'ajout de livre et de fournisseur
+                                echo '<li><a href="./formAddLivre.php">Ajouter un livre</a></li>';
+                            }
+                            ?>
                            <li><a href="./formLivreParAuteur.php">Afficher livres par auteur</a></li>
                            <li><a href="./formLivreParTitre.php">Afficher livres par Titre</a></li>
                            <li><a href="./afficheAPI.php">Affichage Livres via une API</a></li>
@@ -44,7 +50,13 @@
                    <div class="options">
                        <ul>
                            <li><a href="./afficheFournisseurs.php">Afficher les fournisseurs</a></li>
-                           <li><a href="./formAddFournisseur.php">Ajouter un fournisseur</a></li>
+                           <?php
+                            // Vérifiez si l'utilisateur est connecté en tant qu'administrateur
+                            if (isset($_SESSION['role']) && $_SESSION['role'] == '1') {
+                                // Affichez les options d'ajout de livre et de fournisseur
+                                echo '<li><a href="./formAddFournisseur.php">Ajouter un fournisseur</a></li>';
+                            }
+                            ?>
                            <li><a href="./formFournisseurParRaison.php">Afficher fournisseur par Raison sociale</a></li>
                            <li><a href="./formFournisseurParPays.php">Afficher fournisseur par pays</a></li>
                            <li><a href="./formFournisseurParLocalite.php">Afficher fournisseur par localité</a></li>

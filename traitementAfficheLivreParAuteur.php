@@ -12,6 +12,12 @@
 <body>
     <header>
         <h1 class="titrePage">Affichage livres par Auteur</h1>
+        <?php
+        session_start();
+        if (!isset($_SESSION['role']) || $_SESSION['role'] != "1") {
+            header("Location: index.html");
+            exit;
+        } ?>
         <!-- fichier header chargé au démarrage de la page -->
         <?php include "header.php"; ?>
     </header>
@@ -26,8 +32,8 @@
             $pdo = new PDO($dsn, $user, $password);
             $Nom_auteur = $_POST['Nom_auteur'];
 
-            $stmt = $pdo->prepare("SELECT * FROM livre WHERE Nom_auteur = ?");
-            $stmt->execute([$Nom_auteur]);
+            $stmt = $pdo->prepare("SELECT * FROM livre WHERE Nom_auteur = :Nom_auteur");
+            $stmt->execute(['Nom_auteur' => $Nom_auteur]);
             $result = $stmt->fetchAll(PDO::FETCH_OBJ);
         } catch (PDOException $e) {
             echo 'Connexion échouée : ' . $e->getMessage();
@@ -36,17 +42,17 @@
         <table class="table table-bordered">
             <thead>
                 <tr>
-                    <th>ISBN</th>
-                    <th>Titre</th>
-                    <th>Thème</th>
-                    <th>Nb_pages</th>
-                    <th>Format</th>
-                    <th>Nom auteur</th>
-                    <th>Prénom auteur</th>
-                    <th>Editeur</th>
-                    <th>Année édition</th>
-                    <th>Prix</th>
-                    <th>Langue</th>
+                    <th scope="col" class="text-center">ISBN</th>
+                    <th scope="col" class="text-center">Titre</th>
+                    <th scope="col" class="text-center">Thème</th>
+                    <th scope="col" class="text-center">Nb_pages</th>
+                    <th scope="col" class="text-center">Format</th>
+                    <th scope="col" class="text-center">Nom auteur</th>
+                    <th scope="col" class="text-center">Prénom auteur</th>
+                    <th scope="col" class="text-center">Editeur</th>
+                    <th scope="col" class="text-center">Année édition</th>
+                    <th scope="col" class="text-center">Prix</th>
+                    <th scope="col" class="text-center">Langue</th>
                 </tr>
             </thead>
             <?php

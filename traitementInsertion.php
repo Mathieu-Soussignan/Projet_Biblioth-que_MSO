@@ -10,6 +10,7 @@
 </head>
 
 <body>
+    
     <?php
     if (
         isset($_POST['ISBN']) && isset($_POST['Titre']) && isset($_POST['Theme']) && isset($_POST['Nb_pages'])

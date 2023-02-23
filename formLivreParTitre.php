@@ -13,13 +13,21 @@
 <body>
     <header>
         <h1 class="titrePage">Affichage d'un livre par Titre</h1>
+        <?php
+        session_start();
+        if (!isset($_SESSION['role']) || $_SESSION['role'] != "1") {
+            header("Location: index.html");
+            exit;
+        }
+        ?>
+        <!-- fichier header chargé au démarrage de la page -->
         <?php include "header.php"; ?>
     </header>
     <main>
         <form action="./traitementAfficheLivreParTitre.php" method="post">
             <!-- <select id="Titre" name="Titre"> -->
             <select id="Titre" name="Titre" class="form-select" aria-label="Default select example">
-                <option selected>--Choisir un Titre--</option>
+                <option selected class="text-center">----Choisir un Titre----</option>
                 <?php
                 $dsn = 'mysql:host=localhost;dbname=bdp7;charset=utf8';
                 $user = 'root';

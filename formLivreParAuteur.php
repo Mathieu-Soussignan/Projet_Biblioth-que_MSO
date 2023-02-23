@@ -13,13 +13,22 @@
 <body>
     <header>
         <h1 class="titrePage">Affichage d'un livre par Auteur</h1>
+        <?php
+        //Démarrage de la session
+        session_start();
+        if (!isset($_SESSION['role']) || $_SESSION['role'] != "1") {
+            header("Location: index.html");
+            exit;
+        }
+        ?>
+        <!-- Fichier à inclure pour générer le header -->
         <?php include "header.php"; ?>
     </header>
     <main>
         <form action="./traitementAfficheLivreParAuteur.php" method="POST">
             <!-- <select id="Nom_auteur" name="Nom_auteur"> -->
             <select id="Nom_auteur" name="Nom_auteur" class="form-select" aria-label="Default select example">
-                <option selected>--Choisir un Auteur--</option>
+                <option selected class="text-center">----Choisir un Auteur----</option>
                 <!-- <option value="">--Choisir un Auteur--</option> -->
                 <?php
                 $dsn = 'mysql:host=localhost;dbname=bdp7;charset=utf8';
@@ -46,7 +55,7 @@
         </form>
     </main>
     <footer>
-        <p>Copyright ©2023 Bibliothèque</p>
+        <p id="end">Copyright ©2023 Bibliothèque</p>
     </footer>
 </body>
 

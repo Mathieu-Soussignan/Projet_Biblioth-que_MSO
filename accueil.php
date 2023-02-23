@@ -14,8 +14,16 @@
 <body>
     <header>
         <h1 class="titrePage">Bienvenue sur la page d'accueil</h1>
+        <?php
+        //Démarrage de la session
+        session_start();
+        if (!isset($_SESSION['role']) || $_SESSION['role'] != "1") {
+            header("Location: index.html");
+            exit;
+        } ?>
         <!-- fichier header chargé au démarrage de la page -->
-        <?php include "header.php"; ?>
+        <?php include "header.php";
+        ?>
     </header>
     <main>
         <!-- <div class="slider">

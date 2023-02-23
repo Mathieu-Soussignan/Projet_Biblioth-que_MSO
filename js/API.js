@@ -26,7 +26,7 @@ function afficherApi() {
             tableau += '<tr><th>Auteur(s)</th><td>' + auteur + '</td></tr>';
             tableau += '<tr><th>Date de publication</th><td>' + datePublication + '</td></tr>';
             tableau += '<tr><th>Description</th><td>' + description + '</td></tr>';
-            tableau += '</table><button id="close-btn" style="align-items: center; margin: 20px 0;" onclick="enleverApi()">Fermer</button>';
+            tableau += '</table><button id="close-btn" style="align-items: center; margin: 20px 0; width: 80%; border-collapse: collapse; background-size: cover;" onclick="enleverApi()">Fermer</button>';
 
             document.getElementById('resultat').innerHTML = tableau;
             tableauAffiche = true;

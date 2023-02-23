@@ -12,6 +12,12 @@
 <body>
     <header>
         <h1 class="titrePage">Affichage fournisseur par Localité</h1>
+        <?php
+        session_start();
+        if (!isset($_SESSION['role']) || $_SESSION['role'] != "1") {
+            header("Location: index.html");
+            exit;
+        } ?>
         <!-- fichier header chargé au démarrage de la page -->
         <?php include "header.php"; ?>
     </header>
@@ -26,8 +32,8 @@
             $pdo = new PDO($dsn, $user, $password);
             $localite = $_POST['localite'];
 
-            $stmt = $pdo->prepare("SELECT * FROM fournisseur WHERE Localite = ?");
-            $stmt->execute([$localite]);
+            $stmt = $pdo->prepare("SELECT * FROM fournisseur WHERE Localite = :localite");
+            $stmt->execute(['localite' => $localite]);
             $result = $stmt->fetchAll(PDO::FETCH_OBJ);
         } catch (PDOException $e) {
             echo "Erreur : " . $e->getMessage();
@@ -37,16 +43,16 @@
         <table class="table table-bordered">
             <thead>
                 <tr>
-                    <th>Code fournisseur</th>
-                    <th>Raison Sociale</th>
-                    <th>Rue fournisseur</th>
-                    <th>Code postal</th>
-                    <th>Localité</th>
-                    <th>Pays</th>
-                    <th>Tel fournisseur</th>
-                    <th>Url fournisseur</th>
-                    <th>Email fournisseur</th>
-                    <th>Réseau social Fournisseur</th>
+                    <th scope="col" class="text-center">Code fournisseur</th>
+                    <th scope="col" class="text-center">Raison Sociale</th>
+                    <th scope="col" class="text-center">Rue fournisseur</th>
+                    <th scope="col" class="text-center">Code postal</th>
+                    <th scope="col" class="text-center">Localité</th>
+                    <th scope="col" class="text-center">Pays</th>
+                    <th scope="col" class="text-center">Tel fournisseur</th>
+                    <th scope="col" class="text-center">Url fournisseur</th>
+                    <th scope="col" class="text-center">Email fournisseur</th>
+                    <th scope="col" class="text-center">Réseau social Fournisseur</th>
                 </tr>
             </thead>
             <?php

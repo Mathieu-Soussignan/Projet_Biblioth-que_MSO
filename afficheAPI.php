@@ -14,6 +14,13 @@
 <body>
     <header>
         <h1 class="titrePage" id="solo">Bienvenue sur la page de consulation Google Book</h1>
+        <?php
+        session_start();
+        if (!isset($_SESSION['role']) || $_SESSION['role'] != "1") {
+            header("Location: index.html");
+            exit;
+        }
+        ?>
         <!-- fichier header chargé au démarrage de la page -->
         <?php include "header.php"; ?>
     </header>
