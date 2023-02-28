@@ -16,10 +16,10 @@
         <h1 class="titrePage">Liste des livres</h1>
         <?php
         session_start();
-        // if (!isset($_SESSION['role']) || $_SESSION['role'] != "1") {
-        //     header("Location: index.html");
-        //     exit;
-        // }
+        if (!isset($_SESSION['role'])) {
+            header("Location: index.html");
+            exit;
+        }
         ?>
         <!-- fichier header chargé au démarrage de la page -->
         <?php include "header.php"; ?>

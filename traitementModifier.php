@@ -10,6 +10,15 @@
 </head>
 
 <body>
+    <header>
+        <?php
+        session_start();
+        if (!isset($_SESSION['role'])) {
+            header("Location: index.html");
+            exit;
+        }
+        ?>
+    </header>
     <?php
     if (
         isset($_POST['ISBN']) && isset($_POST['Titre']) && isset($_POST['Theme']) && isset($_POST['Nb_pages'])

@@ -14,6 +14,10 @@
     <header>
         <?php
         session_start();
+        if (!isset($_SESSION['role'])) {
+            header("Location: index.html");
+            exit;
+        }
         ?>
         <h1 class="titrePage">Page d'inscription</h1>
     </header>

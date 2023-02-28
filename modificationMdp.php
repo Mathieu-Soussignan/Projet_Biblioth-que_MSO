@@ -12,9 +12,17 @@
 </head>
 
 <body>
-    <main>
+    <header>
         <h1 class="titrePage">Modification du mot de passe</h1>
-
+        <?php
+        session_start();
+        if (!isset($_SESSION['role'])) {
+            header("Location: index.html");
+            exit;
+        }
+        ?>
+    </header>
+    <main>
         <form action="traitementModification.php" method="POST">
 
             <input type="email" name="mail" placeholder="Adresse e-mail" style="margin-bottom: 20px;">

@@ -15,10 +15,10 @@
         <h1 class="titrePage">Liste des fournisseurs</h1>
         <?php
         session_start();
-        // if (!isset($_SESSION['role']) || $_SESSION['role'] != "1") {
-        //     header("Location: index.html");
-        //     exit;
-        // }
+        if (!isset($_SESSION['role'])) {
+            header("Location: index.html");
+            exit;
+        }
         ?>
         <?php include "header.php"; ?>
     </header>

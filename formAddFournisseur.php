@@ -15,7 +15,7 @@
         <h1 class="titrePage">Ajouter un fournisseur</h1>
         <?php
         session_start();
-        if (!isset($_SESSION['role']) || $_SESSION['role'] != "1") {
+        if (!isset($_SESSION['role'])) {
             header("Location: index.html");
             exit;
         }

@@ -37,11 +37,14 @@
         $role = $_POST['role'];
 
         // vérifie si le mot de passe saisi correspond au hachage stocké
-        if (password_verify($entered_password, $hashed_password)) {
-            echo 'Le mot de passe est correct !';
-        } else {
-            echo 'Le mot de passe est incorrect!';
-        }
+
+        // ok sur le login mais pas sur l'inscription
+        
+        // if (password_verify($entered_password, $hashed_password)) {
+        //     echo 'Le mot de passe est correct !';
+        // } else {
+        //     echo 'Le mot de passe est incorrect!';
+        // }
 
         $query = "INSERT INTO user (nom, prenom, mail, mdp, role) VALUES (:nom, :prenom, :mail, :mdp, :role)";
         $stmt = $pdo->prepare($query);
