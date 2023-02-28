@@ -14,7 +14,7 @@ try {
 }
 
 $mail = $_POST['mail'];
-$newPassword = $_POST['newPassword'];
+$newPassword = password_hash($_POST['newPassword'], PASSWORD_DEFAULT);
 
 $query = $pdo->prepare("SELECT * FROM user WHERE mail=:mail");
 $query->bindParam(':mail', $mail);

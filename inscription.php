@@ -12,7 +12,7 @@
 
 <body>
     <header>
-        <?php 
+        <?php
         session_start();
         ?>
         <h1 class="titrePage">Page d'inscription</h1>
@@ -32,7 +32,7 @@
             <input type="email" id="mail" name="mail" required>
             <br>
             <label for="password">Mot de passe :</label>
-            <input type="password" id="password" name="mdp" required minlength="8">
+            <input type="password" id="password" name="mdp" required>
             <br>
             <label for="role">Rôle :</label>
             <select id="role" name="role" class="form-select" aria-label="Default select example">

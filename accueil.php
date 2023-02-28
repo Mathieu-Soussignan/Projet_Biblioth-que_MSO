@@ -17,10 +17,11 @@
         <?php
         //Démarrage de la session
         session_start();
-        if (!isset($_SESSION['role']) || $_SESSION['role'] != "1") {
-            header("Location: index.html");
-            exit;
-        } ?>
+        // if (!isset($_SESSION['role']) || $_SESSION['role'] != "1") {
+        //     header("Location: index.html");
+        //     exit;
+        // }
+        ?>
         <!-- fichier header chargé au démarrage de la page -->
         <?php include "header.php";
         ?>
