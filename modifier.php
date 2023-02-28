@@ -28,7 +28,9 @@
         $username = 'root';
         $password = '';
         $options = array(
-            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+            PDO::ATTR_EMULATE_PREPARES   => false,
         );
 
         try {
@@ -98,6 +100,9 @@
             <a href="./afficheLivre.php" style="display:inline-block; padding: 10px 20px; font-size:16px; width: 40%; font-weight: bold; text-decoration: none; color: black; background-color: #ddd; border-radius: 5px; text-align:center;">Annuler</a>
         </form>
     </main>
+    <footer>
+        <p id="end">Copyright ©2023 Bibliothèque</p>
+    </footer>
 </body>
 
 </html>

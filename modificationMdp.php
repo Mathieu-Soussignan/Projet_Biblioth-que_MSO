@@ -16,10 +16,6 @@
         <h1 class="titrePage">Modification du mot de passe</h1>
         <?php
         session_start();
-        if (!isset($_SESSION['role'])) {
-            header("Location: index.html");
-            exit;
-        }
         ?>
     </header>
     <main>
@@ -35,7 +31,9 @@
             <a href="./index.html" style=" padding: 10px 20px; font-size:20px; font-weight: bold; text-decoration: none; color: black;">Annuler</a>
         </form>
     </main>
-
+    <footer>
+        <p id="end">Copyright ©2023 Bibliothèque</p>
+    </footer>
 </body>
 
 </html>

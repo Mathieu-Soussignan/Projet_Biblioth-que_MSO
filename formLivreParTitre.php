@@ -53,7 +53,7 @@
         </form>
     </main>
     <footer>
-        <p>Copyright ©2023 Bibliothèque</p>
+        <p id="end">Copyright ©2023 Bibliothèque</p>
     </footer>
 </body>
 
