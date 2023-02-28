@@ -104,6 +104,10 @@ h2 {
     margin: 30px 0 60px 0;
 }
 
+h2.top {
+    margin-top: 2%;
+}
+
 footer {
     position: relative;
     bottom: 0;

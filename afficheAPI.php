@@ -25,7 +25,7 @@
         <?php include "header.php"; ?>
     </header>
     <main>
-        <h2>Exemple d'utilisation d'une API</h2>
+        <h2 class="top">Exemple d'utilisation d'une API</h2>
         <div id="isbn-container">
             <label for="isbn-input">ISBN:</label>
             <input type="text" id="isbn-input">
