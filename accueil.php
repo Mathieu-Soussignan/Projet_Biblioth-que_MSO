@@ -11,49 +11,22 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
 </head>
 
+
+<?php
+//Démarrage de la session
+session_start();
+if (!isset($_SESSION['role'])) {
+    header("Location: index.html");
+    exit;
+}
+?>
+
 <body>
-    <header>
-        <h1 class="titrePage">Bienvenue sur la page d'accueil</h1>
-        <?php
-        //Démarrage de la session
-        session_start();
-        if (!isset($_SESSION['role'])) {
-            header("Location: index.html");
-            exit;
-        }
-        ?>
-        <!-- fichier header chargé au démarrage de la page -->
-        <?php include "header.php";
-        ?>
-    </header>
+    <h1 class="titrePage">Bienvenue sur la page d'accueil</h1>
+    <!-- fichier header chargé au démarrage de la page -->
+    <?php include "header.php";
+    ?>
     <main>
-        <!-- <div class="slider">
-            <div class="contents">
-                <div class="content">
-                    <img src="./img/book.jpg" alt="">
-                </div>
-                <div class="content">
-                    <img src="./img/Livre-ouvert.jpg" alt="">
-                </div>
-                <div class="content">
-                    <img src="./img/Livre-ouvert_2.jpg" alt="">
-                </div>
-                <div class="content">
-                    <img src="./img/harry_potter_saga.png" alt="">
-                </div>
-                <div class="content">
-                    <img src="./img/dark_cosmic.png" alt="">
-                </div>
-            </div>
-            <div class="directions">
-                <div class="left">
-                    <i>&#139;</i>
-                </div>
-                <div class="right">
-                    <i>&#155;</i>
-                </div>
-            </div>
-        </div> -->
         <div class="slider">
             <img src="img/book.jpg" alt="img1" class="img__slider active" />
             <img src="img/dark_cosmic.png" alt="img2" class="img__slider" />

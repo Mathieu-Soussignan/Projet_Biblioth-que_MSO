@@ -11,19 +11,19 @@
     <script src="./js/API.js" defer></script>
 </head>
 
+
+<?php
+session_start();
+if (!isset($_SESSION['role'])) {
+    header("Location: index.html");
+    exit;
+}
+?>
+
 <body>
-    <header>
-        <h1 class="titrePage" id="solo">Bienvenue sur la page de consulation Google Book</h1>
-        <?php
-        session_start();
-        if (!isset($_SESSION['role'])) {
-            header("Location: index.html");
-            exit;
-        }
-        ?>
-        <!-- fichier header chargé au démarrage de la page -->
-        <?php include "header.php"; ?>
-    </header>
+    <h1 class="titrePage" id="solo">Bienvenue sur la page de consultation Google Book</h1>
+    <!-- fichier header chargé au démarrage de la page -->
+    <?php include "header.php"; ?>
     <main>
         <h2 class="top">Exemple d'utilisation d'une API</h2>
         <div id="isbn-container">

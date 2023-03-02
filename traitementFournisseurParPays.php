@@ -9,19 +9,18 @@
     <link rel="stylesheet" type="text/css" href="./css/style.css">
 </head>
 
+
+<?php
+session_start();
+if (!isset($_SESSION['role'])) {
+    header("Location: index.html");
+    exit;
+}
+?>
 <body>
-    <header>
-        <h1 class="titrePage">Affichage fournisseur par Pays</h1>
-        <?php
-        session_start();
-        if (!isset($_SESSION['role'])) {
-            header("Location: index.html");
-            exit;
-        } 
-        ?>
-        <!-- fichier header chargé au démarrage de la page -->
-        <?php include "header.php"; ?>
-    </header>
+    <h1 class="titrePage">Affichage fournisseur par Pays</h1>
+    <!-- fichier header chargé au démarrage de la page -->
+    <?php include "header.php"; ?>
     <?php
     if (isset($_POST['pays'])) {
 

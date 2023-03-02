@@ -10,18 +10,18 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
 </head>
 
+
+<?php
+session_start();
+if (!isset($_SESSION['role'])) {
+    header("Location: index.html");
+    exit;
+}
+?>
+
 <body>
-    <header>
-        <h1 class="titrePage">Liste des fournisseurs</h1>
-        <?php
-        session_start();
-        if (!isset($_SESSION['role'])) {
-            header("Location: index.html");
-            exit;
-        }
-        ?>
-        <?php include "header.php"; ?>
-    </header>
+    <h1 class="titrePage">Liste des fournisseurs</h1>
+    <?php include "header.php"; ?>
     <main>
         <table class="table table-bordered">
             <thead>

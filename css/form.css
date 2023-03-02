@@ -95,6 +95,10 @@ input[type="submit"] {
     border-color: #4CAF50;
 }
 
+input.top-one {
+    margin-top: 5%;
+}
+
 /* #pays, #Titre, #localite, #Nom_auteur, #Raison_sociale  {
     display: inline-block;
     margin: 0;

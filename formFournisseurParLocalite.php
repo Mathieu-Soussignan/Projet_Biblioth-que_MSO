@@ -10,19 +10,20 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 </head>
 
+
+<?php
+//Démarrage de la session
+session_start();
+if (!isset($_SESSION['role'])) {
+    header("Location: index.html");
+    exit;
+}
+?>
+
 <body>
-    <header>
-        <h1 class="titrePage">Affichage d'un fournisseur par localité</h1>
-        <?php
-        session_start();
-        if (!isset($_SESSION['role'])) {
-            header("Location: index.html");
-            exit;
-        }
-        ?>
-        <!-- fichier header chargé au démarrage de la page -->
-        <?php include "header.php"; ?>
-    </header>
+    <h1 class="titrePage">Affichage d'un fournisseur par sa localité</h1>
+    <!-- fichier header chargé au démarrage de la page -->
+    <?php include "header.php"; ?>
     <main>
         <form action="./traitementAfficheFournisseurParLocalite.php" method="POST">
             <select id="localite" name="localite" class="form-select" aria-label="Default select example">

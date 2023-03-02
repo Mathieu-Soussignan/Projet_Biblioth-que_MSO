@@ -9,19 +9,19 @@
     <link rel="stylesheet" type="text/css" href="./css/style.css">
 </head>
 
+
+<?php
+session_start();
+if (!isset($_SESSION['role'])) {
+    header("Location: index.html");
+    exit;
+}
+?>
+<!-- fichier header chargé au démarrage de la page -->
+<?php include "header.php"; ?>
+
 <body>
-    <header>
-        <h1 class="titrePage">Affichage livres par Auteur</h1>
-        <?php
-        session_start();
-        if (!isset($_SESSION['role'])) {
-            header("Location: index.html");
-            exit;
-        } 
-        ?>
-        <!-- fichier header chargé au démarrage de la page -->
-        <?php include "header.php"; ?>
-    </header>
+    <h1 class="titrePage">Affichage livres par Auteur</h1>
     <?php
     if (isset($_POST['Nom_auteur'])) {
 
